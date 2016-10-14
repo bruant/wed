@@ -1,0 +1,89 @@
+Tables
+
+sequence
+{
+  id:user,
+  seq:1
+}
+
+
+aws dynamodb create-table --table-name Sequence --attribute-definitions AttributeName=Table,AttributeType=S AttributeName=Sequence,AttributeType=S --key-schema AttributeName=Table,KeyType=HASH AttributeName=Sequence,KeyType=STRING --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --endpoint-url http://localhost:8000
+{
+    "TableDescription": {
+        "TableArn": "arn:aws:dynamodb:ddblocal:000000000000:table/Sequence",
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "Table",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "Sequence",
+                "AttributeType": "S"
+            }
+        ],
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "WriteCapacityUnits": 1,
+            "LastIncreaseDateTime": 0.0,
+            "ReadCapacityUnits": 1,
+            "LastDecreaseDateTime": 0.0
+        },
+        "TableSizeBytes": 0,
+        "TableName": "Sequence",
+        "TableStatus": "ACTIVE",
+        "KeySchema": [
+            {
+                "KeyType": "HASH",
+                "AttributeName": "Table"
+            },
+            {
+                "KeyType": "RANGE",
+                "AttributeName": "Sequence"
+            }
+        ],
+        "ItemCount": 0,
+        "CreationDateTime": 1476460039.269
+    }
+}
+
+{
+  id:party,
+  seq:2
+}
+
+
+user
+{
+  userId:1 - primary
+  email:tesztelek@test.hu - sort key
+  pwd:8787878 -- sort key
+  partyId:12233
+  edit:yes
+  admin:no
+}
+
+
+
+party
+{
+  partyId:12233,
+  user:tesztelek@test.hu
+  date:2016-11-12,
+  place:Veroce
+}
+
+
+
+
+guest
+{
+  partyId:12233,
+  name:Test Elek,
+  bribe:no
+}
+
+timeline
+{
+  partyId:12233,
+
+}
