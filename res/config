@@ -1,0 +1,1 @@
+-Dconfig="c:\tresi\vision\wedding\apache-tomcat-6.0.44\conf\wedding.server.properties" -Dlog4j="c:/tresi/vision/wedding/apache-tomcat-6.0.44/conf/wedding.server.log4j.xml"
