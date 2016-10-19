@@ -1,0 +1,27 @@
+{
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "partyId",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "city",
+            "AttributeType": "S"
+        }
+    ],
+    "TableName": "party",
+    "KeySchema": [
+        {
+            "AttributeName": "partyId",
+            "KeyType": "HASH"
+        },
+        {
+            "AttributeName": "city",
+            "KeyType": "RANGE"
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+    }
+}

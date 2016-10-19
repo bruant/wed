@@ -1,0 +1,75 @@
+{
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "userId",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "email",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "name",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "guestCode",
+            "AttributeType": "S"
+        }
+    ],
+    "TableName": "user",
+    "KeySchema": [
+        {
+            "AttributeName": "userId",
+            "KeyType": "HASH"
+        },
+        {
+            "AttributeName": "email",
+            "KeyType": "RANGE"
+        }
+    ],
+    "LocalSecondaryIndexes": [
+        {
+            "IndexName": "name",
+            "KeySchema": [
+		        {
+		            "AttributeName": "userId",
+		            "KeyType": "HASH"
+		        },
+                {
+                    "AttributeName": "name",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "ALL"
+            }
+        }
+    ],
+    "GlobalSecondaryIndexes": [
+        {
+            "IndexName": "guestCode",
+            "KeySchema": [
+                {
+                    "AttributeName": "userId",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "guestCode",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "ALL"
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            }
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+    }
+}

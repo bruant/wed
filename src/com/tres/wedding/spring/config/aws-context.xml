@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean id="awsCredentials" class="com.amazonaws.auth.BasicAWSCredentials">
+		<constructor-arg value="${aws_access_key}" />
+		<constructor-arg value="${aws_secret_key}" />
+	</bean>
+
+	<bean id="awsClient" class="com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient">
+		<constructor-arg ref="awsCredentials" />
+	</bean>
+
+	<bean id="credentialProvider" class="com.amazonaws.auth.profile.ProfileCredentialsProvider"/>
+
+	<bean id="localClient" class="com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient">
+		<constructor-arg ref="credentialProvider" />
+	</bean>
+
+	<bean id="region_enum"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass">
+			<value>com.amazonaws.regions.Regions</value>
+		</property>
+		<property name="targetMethod">
+			<value>fromName</value>
+		</property>
+		<property name="arguments">
+			<list>
+				<value>${aws_region}</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="region"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass">
+			<value>com.amazonaws.regions.Region</value>
+		</property>
+		<property name="targetMethod">
+			<value>getRegion</value>
+		</property>
+		<property name="arguments">
+			<list>
+				<ref local="region_enum" />
+			</list>
+		</property>
+	</bean>
+	<bean
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject">
+			<ref local="awsClient" />
+		</property>
+		<property name="targetMethod">
+			<value>setRegion</value>
+		</property>
+		<property name="arguments">
+			<list>
+				<ref local="region" />
+			</list>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject">
+			<ref local="localClient" />
+		</property>
+		<property name="targetMethod">
+			<value>setEndpoint</value>
+		</property>
+		<property name="arguments">
+			<list>
+				<value>${dynamodb_localhost_endpoint}</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="awsDynamoDBMapper"
+		class="com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper">
+		<constructor-arg ref="awsClient" />
+	</bean>
+
+	<bean id="localDynamoDBMapper"
+		class="com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper">
+		<constructor-arg ref="localClient" />
+	</bean>
+
+</beans>

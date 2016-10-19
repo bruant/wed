@@ -1,17 +1,43 @@
 package com.tres.wedding.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import com.amazonaws.services.dynamodbv2.document.BatchWriteItemOutcome;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.PutItemOutcome;
 import com.amazonaws.services.dynamodbv2.document.Table;
-import com.amazonaws.services.dynamodbv2.document.TableWriteItems;
+import com.tres.wedding.model.Address;
+import com.tres.wedding.model.Addresses;
+import com.tres.wedding.model.User;
 
 public class DynamoPutExample {
 
 	public static void main(String[] args) {
+
+		AmazonDynamoDBClient client = new AmazonDynamoDBClient(new ProfileCredentialsProvider());
+		client.withEndpoint("http://localhost:8000");
+
+		DynamoDBMapper mapper = new DynamoDBMapper(client);
+		User user = new User();
+		user.setName("Test Elek");
+		user.setEmail("test@test.hu");
+		user.setGuestCode("YTDHJJK");
+
+		Addresses addresses = new Addresses();
+		Address addr = new Address();
+		addr.setAddressLine1("test");
+		addr.setCity("city");
+		List<Address> list = new ArrayList<Address>();
+		list.add(addr);
+		addresses.setAddresses(list);
+		user.setAddresses(addresses);
+		mapper.save(user);
 
 	}
 

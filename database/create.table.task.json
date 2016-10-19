@@ -1,0 +1,75 @@
+{
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "taskId",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "runbookId",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "partyId",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "userId",
+            "AttributeType": "S"
+        }
+    ],
+    "TableName": "task",
+    "KeySchema": [
+        {
+            "AttributeName": "taskId",
+            "KeyType": "HASH"
+        },
+        {
+            "AttributeName": "runbookId",
+            "KeyType": "RANGE"
+        }
+    ],
+    "LocalSecondaryIndexes": [
+        {
+            "IndexName": "task-by-party",
+            "KeySchema": [
+		        {
+		            "AttributeName": "taskId",
+		            "KeyType": "HASH"
+		        },
+                {
+                    "AttributeName": "partyId",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "ALL"
+            }
+        }
+    ],
+    "GlobalSecondaryIndexes": [
+        {
+            "IndexName": "task-assigned-to-user",
+            "KeySchema": [
+                {
+                    "AttributeName": "taskId",
+                    "KeyType": "HASH"
+                },
+                {
+                    "AttributeName": "userId",
+                    "KeyType": "RANGE"
+                }
+            ],
+            "Projection": {
+                "ProjectionType": "ALL"
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+            }
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+    }
+}

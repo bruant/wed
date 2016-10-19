@@ -1,5 +1,69 @@
-sequence
+user
 {
-  id:user,
-  seq:1
+  userId:AA233DRFGTY - primary
+  email:tesztelek@test.hu - sort key
+  pwd:hjhjhuyuu87676767j -- sort key
+  code:'login' - sort key
+  name: 'teszt elek'
+  organization: bilds
+  privileges : [
+     { party_id: 'jkjkjkjkjkj', role:"guest" },
+     { party_id: '*', role:"admin" },
+     { party_id: 'ooiuuu', role:"organizer" }
+  ]
+  addresses : [
+     { street: '123 Sesame St', city: 'Anytown', cc: 'USA' },
+     { street: '123 Avenue Q', city: 'New York', cc: 'USA' }
+  ]
+  phones : [
+     { country code: '+36', number"'1223444'},
+     { country code: '+1', number"'1224544'},
+  ]
+  attribute : [
+     { key: 'bribe', value='yes'}
+  ]
+
 }
+
+party
+{
+  partyId:12233,
+  description:'nagy nap'
+  date:2016-11-12,
+  city:Veroce
+  address
+  gpsx
+  gpsy
+  runbook : [
+     { id: '6776876', shortDesc: 'Test', order: '1' },
+     { id: '67768762', shortDesc: 'Test2', order: '2' }
+  ],
+  partyUsers : [
+     { id: '6776876', name: 'Test'},
+     { id: '67768762', name: 'Test2'},
+  ]
+
+}
+
+runbook_entry
+{
+  entry_id:12233,
+  name: nyitotanc
+  description:dancing
+  comment:'keringo'
+  time: 15:00
+  tasks : {'76768768', '76768uiiu8'}
+}
+
+task
+{
+  taskid:23309
+  runbook-entry-id:12233,
+  partyId:12233,
+  userId:12233,
+  name: zene
+  done: no
+  description:'zene nyitotanchoz'
+  subtasks : {'76768768', '76768uiiu8'}
+}
+

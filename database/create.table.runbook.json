@@ -1,0 +1,27 @@
+{
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "runbookEntryId",
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "runbookId",
+            "AttributeType": "S"
+        }
+    ],
+    "TableName": "runbookEntry",
+    "KeySchema": [
+        {
+            "AttributeName": "runbookEntryId",
+            "KeyType": "HASH"
+        },
+        {
+            "AttributeName": "runbookId",
+            "KeyType": "RANGE"
+        }
+    ],
+        "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+    }
+}

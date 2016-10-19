@@ -1,0 +1,4 @@
+aws dynamodb create-table --cli-input-json file://c://tresi/vision/wedding/source/wed/database/create.table.user.json --endpoint-url http://localhost:8000
+aws dynamodb scan --table-name user --endpoint-url http://localhost:8000
+aws dynamodb delete-table --table-name task --endpoint-url http://localhost:8000
+aws dynamodb list-tables --endpoint-url=http://localhost:8000

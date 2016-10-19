@@ -9,14 +9,8 @@ public class ConfigurationMgr {
 	@Value("${localMachine}")
     private String localMachine;
 
-	@Value("${endpoint}")
-    private String endpoint;
-
 	public boolean runningOnLocalMachine() {
 		return ON.equals(localMachine);
 	}
 
-	public String getEndpoint() {
-		return endpoint;
-	}
 }
