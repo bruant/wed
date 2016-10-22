@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!doctype html>
 <html>
@@ -18,27 +17,29 @@
 	<h3>Please login or sign up ...</h3>
 
     <div>
-		<h3>Registration</h3>
-		<form:form method="POST" action="/server/login" modelAttribute="login">
-		   <table>
-		    <tr>
-		        <td><form:label path="userName">User name</form:label></td>
-		        <td><form:input path="userName" /></td>
-		    </tr>
-		    <tr>
-		        <td><form:label path="password">Password</form:label></td>
-		        <td><form:password path="password" /></td>
-		    </tr>
-		    <tr>
-		        <td colspan="2">
-		            <input type="submit" value="Submit"/>
-		        </td>
-		    </tr>
-		</table>
-		</form:form>
+	<h3>Registration</h3>
+        User:
+        <input type="text"/>
+        Password:
+        <input type="password"/>
+        <div>
+        <a href="/server/login">Login</a>
+        </div>
         <div>
         <a href="/server/registration">Sign up</a>
         </div>
     </div>
+
+
+    <!-- div ng-controller="TestCtrl">
+        <h1>{{title}}</h1>
+        <input type="text" ng-model="title">
+    </div  -->
+    <script src="js/lib/jquery-v1.11.1.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/lib/angular-resource.min.js"></script>
+    <script src="js/app/wedding.server.js"></script>
+
   </body>
 </html>
