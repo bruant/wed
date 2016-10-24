@@ -1,4 +1,4 @@
-package com.tres.wedding.model;
+package com.tres.wedding.dynamo.model;
 
 import java.util.List;
 

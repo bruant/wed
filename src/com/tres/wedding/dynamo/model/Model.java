@@ -1,4 +1,4 @@
-package com.tres.wedding.model;
+package com.tres.wedding.dynamo.model;
 
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
@@ -8,7 +8,7 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
  */
 public abstract class Model {
 
-	protected String toLog() {
+	public String toLog() {
 		return ReflectionToStringBuilder.toString(this);
 	}
 

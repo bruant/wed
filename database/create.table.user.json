@@ -9,6 +9,10 @@
             "AttributeType": "S"
         },
         {
+            "AttributeName": "password",
+            "AttributeType": "S"
+        },
+        {
             "AttributeName": "name",
             "AttributeType": "S"
         },
@@ -22,38 +26,36 @@
         {
             "AttributeName": "userId",
             "KeyType": "HASH"
-        },
-        {
-            "AttributeName": "email",
-            "KeyType": "RANGE"
         }
     ],
-    "LocalSecondaryIndexes": [
+    "GlobalSecondaryIndexes": [
         {
-            "IndexName": "name",
+            "IndexName": "login",
             "KeySchema": [
 		        {
-		            "AttributeName": "userId",
+		            "AttributeName": "email",
 		            "KeyType": "HASH"
 		        },
                 {
-                    "AttributeName": "name",
+                    "AttributeName": "password",
                     "KeyType": "RANGE"
                 }
             ],
             "Projection": {
                 "ProjectionType": "ALL"
+            },
+            "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
             }
-        }
-    ],
-    "GlobalSecondaryIndexes": [
+        },
         {
             "IndexName": "guestCode",
             "KeySchema": [
-                {
-                    "AttributeName": "userId",
-                    "KeyType": "HASH"
-                },
+		        {
+		            "AttributeName": "email",
+		            "KeyType": "HASH"
+		        },
                 {
                     "AttributeName": "guestCode",
                     "KeyType": "RANGE"

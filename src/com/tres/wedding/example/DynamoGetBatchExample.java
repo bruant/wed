@@ -14,7 +14,7 @@ import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.TableKeysAndAttributes;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.tres.wedding.model.User;
+import com.tres.wedding.dynamo.model.User;
 
 public class DynamoGetBatchExample {
 

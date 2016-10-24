@@ -1,8 +1,8 @@
 package com.tres.wedding.web.model;
 
-public class LoginModel {
+public class LoginModel extends Model {
 
-	private String userName;
+	private String email;
 
 	private String password;
 
@@ -14,10 +14,11 @@ public class LoginModel {
 		this.password = password;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

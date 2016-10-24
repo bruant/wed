@@ -13,7 +13,7 @@ import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.document.spec.GetItemSpec;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.tres.wedding.model.User;
+import com.tres.wedding.dynamo.model.User;
 
 public class DynamoGetExample {
 

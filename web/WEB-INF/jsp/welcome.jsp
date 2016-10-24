@@ -22,8 +22,8 @@
 		<form:form method="POST" action="/server/login" modelAttribute="login">
 		   <table>
 		    <tr>
-		        <td><form:label path="userName">User name</form:label></td>
-		        <td><form:input path="userName" /></td>
+		        <td><form:label path="email">E-mail</form:label></td>
+		        <td><form:input path="email" /></td>
 		    </tr>
 		    <tr>
 		        <td><form:label path="password">Password</form:label></td>

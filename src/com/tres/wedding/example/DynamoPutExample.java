@@ -12,9 +12,9 @@ import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.PutItemOutcome;
 import com.amazonaws.services.dynamodbv2.document.Table;
-import com.tres.wedding.model.Address;
-import com.tres.wedding.model.Addresses;
-import com.tres.wedding.model.User;
+import com.tres.wedding.dynamo.model.Address;
+import com.tres.wedding.dynamo.model.Addresses;
+import com.tres.wedding.dynamo.model.User;
 
 public class DynamoPutExample {
 
