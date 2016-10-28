@@ -10,34 +10,44 @@
     <title><spring:message code="welcome.title" text="default text" /></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/wedding.server.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/wedding.server.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
 </head>
-  <body>
+  <body data-ng-app="formSubmit">
+
+	<script type="text/javascript">
+		var ctx = '<%= request.getContextPath()%>';
+	</script>
+
+    <script src="${pageContext.request.contextPath}/js/lib/jquery-1.12.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/lib/angular.min.1.3.8.js"></script>
+    <script src="${pageContext.request.contextPath}/js/lib/angular-route.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/lib/angular-resource.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/app/wedding.login.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+	    $('#login2').each(function() {
+	    	animationClick(this, 'fadeOut');
+	    });
+	});
+
+	</script>
 
 	<h2>Welcome to the wedding organizer</h2>
-	<h3>Please login or sign up ...</h3>
 
-    <div>
-		<h3>Registration</h3>
-		<form:form method="POST" action="/server/login" modelAttribute="login">
-		   <table>
-		    <tr>
-		        <td><form:label path="email">E-mail</form:label></td>
-		        <td><form:input path="email" /></td>
-		    </tr>
-		    <tr>
-		        <td><form:label path="password">Password</form:label></td>
-		        <td><form:password path="password" /></td>
-		    </tr>
-		    <tr>
-		        <td colspan="2">
-		            <input type="submit" value="Submit"/>
-		        </td>
-		    </tr>
-		</table>
-		</form:form>
+    <div style="width: 30%; background-color: white;" id="boxshadow">
+		<form data-ng-submit="submit()" data-ng-controller="FormSubmitController">
+				<h3>{{headerText}}</h3>
+				<p>Email:    <input type="text" data-ng-model="email"></p>
+				<p>Password: <input type="password" data-ng-model="password"></p>
+				<input id="login" type="image" value="Submit" src="${pageContext.request.contextPath}/img/login.png" width="12%" height="12%" ng-class="style"/><br>
+				 <pre>Form data ={{list}}</pre>
+		</form>
+
         <div>
-        <a href="/server/registration">Sign up</a>
+        <a href="/server/registration/init">Sign up</a>
         </div>
     </div>
   </body>

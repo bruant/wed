@@ -33,7 +33,7 @@ public class DynamoGetBatchExample {
 			PaginatedScanList<User> users = mapper.scan(User.class, expr);
 			if (users != null) {
 				for (User user : users) {
-					System.out.println("User: " + user.getUserId());
+					System.out.println("User: " + user.getEmail());
 				}
 			} else {
 				System.out.println("User list is null");

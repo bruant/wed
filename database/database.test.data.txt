@@ -1,9 +1,8 @@
 user
 {
-  userId:AA233DRFGTY - primary
-  email:tesztelek@test.hu - sort key
+  email:tesztelek@test.hu - primary key
   pwd:hjhjhuyuu87676767j -- sort key
-  code:'login' - sort key
+  code:'YUYUYH' - sort key
   name: 'teszt elek'
   organization: bilds
   privileges : [

@@ -31,5 +31,14 @@
 		</property>
 	</bean>
 
+	<bean id="simpleMappingExceptionResolver" class="com.tres.wedding.exception.MappingExceptionResolver">
+		<property name="exceptionMappings">
+			<map>
+				<entry key="Exception" value="generic_error"></entry>
+			</map>
+		</property>
+		<property name="defaultErrorView" value="generic_error"/>
+	</bean>
+
 	<bean id="configurationMgr" class="com.tres.wedding.spring.config.ConfigurationMgr" />
 </beans>

@@ -1,19 +1,11 @@
 {
     "AttributeDefinitions": [
         {
-            "AttributeName": "userId",
-            "AttributeType": "S"
-        },
-        {
             "AttributeName": "email",
             "AttributeType": "S"
         },
         {
             "AttributeName": "password",
-            "AttributeType": "S"
-        },
-        {
-            "AttributeName": "name",
             "AttributeType": "S"
         },
         {
@@ -24,7 +16,7 @@
     "TableName": "user",
     "KeySchema": [
         {
-            "AttributeName": "userId",
+            "AttributeName": "email",
             "KeyType": "HASH"
         }
     ],
